@@ -4,7 +4,7 @@ import json
 import os
 
 import yaml
-from munch import Munch, iteritems
+from munch import Munch
 
 from config_probe.exceptions import ConfigNotFound
 
@@ -46,7 +46,7 @@ def _deduce_namespaces(path_matchers, path_parts):
     namespaces = []
     path_parts, current_part = os.path.split(path_parts)
     path_matchers, matcher = os.path.split(path_matchers)
-    while current_part is not "":
+    while current_part != "":
         if matcher == NAMESPACE_PLACEHOLDER:
             namespaces.append(current_part)
 
@@ -67,7 +67,7 @@ def _add_to_configuration(config, namespaces, new_values):
 
 def _update(config, values):
     for k, v in values.items():
-        if k in config and isinstance(v, collections.Mapping):
+        if k in config and isinstance(v, collections.abc.Mapping):
             _update(config[k], v)
         else:
             config[k] = v
@@ -83,7 +83,7 @@ class _Munch(Munch):
 
 def _munchify(x):
     if isinstance(x, dict):
-        return _Munch((k, _munchify(v)) for k,v in iteritems(x))
+        return _Munch((k, _munchify(v)) for k,v in x.items())
     elif isinstance(x, (list, tuple)):
         return type(x)(_munchify(v) for v in x)
     else:
