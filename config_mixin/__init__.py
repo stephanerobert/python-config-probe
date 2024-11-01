@@ -6,7 +6,7 @@ import os
 import yaml
 from munch import Munch
 
-from config_probe.exceptions import ConfigNotFound
+from config_mixin.exceptions import ConfigNotFound
 
 NAMESPACE_PLACEHOLDER = "(*)"
 

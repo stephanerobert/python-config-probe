@@ -1,5 +1,5 @@
-[![Build Status](https://travis-ci.org/internap/python-config-probe.svg?branch=master)](https://travis-ci.org/internap/python-config-probe)
-[![PyPI version](https://badge.fury.io/py/config-probe.svg)](http://badge.fury.io/py/config-probe)
+![Build Status](https://github.com/stephanerobert/config-mixin/actions/workflows/tox.yml/badge.svg?branch=master)
+[![PyPI version](https://badge.fury.io/py/config-mixin.svg)](http://badge.fury.io/py/config-mixin)
 
 
 Mission
@@ -25,7 +25,7 @@ Use it:
 
 - **path**
 
-    Initial path to probe.  Patterns will be tested against the file structure underneath the path
+    Initial path to probe.  Patterns will be tested against the file structure underneath the path,
     and it will be ignored in determining the namespacing.
 
 - **patterns**
@@ -58,7 +58,7 @@ Use it:
 
 ## Mocking the probing
 
-Your unit test can have your code use fake_probe instead to which to give a dict and it will appear as if it
+Your unit test can have your code use fake_probe instead to which to give a dict, and it will appear as if it
 was just probed. Example:
 
     config = fake_probe({
